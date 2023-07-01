@@ -1,0 +1,12 @@
+@startuml 00x_start-rsr
+skinparam responseMessageBelowArrow true
+
+title Start RSR
+
+participant "new window"
+participant "RSR://v1/represent-flow-visualization-page"
+
+"new window" -> "RSR://v1/represent-flow-visualization-page": (no security)
+"RSR://v1/represent-flow-visualization-page" --> "new window": {client-side-gui-application}
+
+@enduml

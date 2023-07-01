@@ -1,0 +1,24 @@
+@startuml 03x_visualize_flow
+skinparam responseMessageBelowArrow true
+
+title Visualize Flow
+
+participant "client-side-gui-application"
+participant "RSR://v1/update-flow-visualization-page"
+participant "AA://v1/approve-oam-request"
+participant "EATL://v1/list-records-of-flow"
+
+rnote over "client-side-gui-application": Visualize Flow
+"client-side-gui-application" -> "RSR://v1/update-flow-visualization-page": {admin-name, password, x-correlator} (no security)
+activate "RSR://v1/update-flow-visualization-page"
+
+"RSR://v1/update-flow-visualization-page" -> "AA://v1/approve-oam-request": {admin-name, password} (apiKeyAuth)
+"AA://v1/approve-oam-request" --> "RSR://v1/update-flow-visualization-page": {approval}
+
+"RSR://v1/update-flow-visualization-page" -> "EATL://v1/list-records-of-flow": {x-correlator} (apiKeyAuth)
+"EATL://v1/list-records-of-flow" --> "RSR://v1/update-flow-visualization-page": {tabular flow information}
+
+"RSR://v1/update-flow-visualization-page" --> "client-side-gui-application": {new-data-for-client-side-gui-application}
+deactivate "RSR://v1/update-flow-visualization-page"
+
+@enduml

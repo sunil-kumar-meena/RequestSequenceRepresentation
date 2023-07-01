@@ -1,0 +1,17 @@
+@startuml 01x_start-rsr-in-generic-representation
+skinparam responseMessageBelowArrow true
+
+title Start RSR in Generic Representation
+
+participant "GR"
+participant "new window"
+participant "RSR://v1/start-application-in-generic-representation"
+participant "RSR://v1/represent-flow-visualization-page"
+
+"GR" -> "RSR://v1/start-application-in-generic-representation": (no security)
+"RSR://v1/start-application-in-generic-representation" --> "GR": {link to login page}
+
+"GR" -> "RSR://v1/represent-flow-visualization-page": (no security)
+"RSR://v1/represent-flow-visualization-page" --> "new window": {client-side-gui-application}
+
+@enduml
