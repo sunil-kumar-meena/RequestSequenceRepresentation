@@ -80,6 +80,8 @@ paths:
       summary: 'Initiates authentication of the user and updating the flow visualization page with information about flow'
       tags:
         - IndividualServices
+      security:
+        - basicAuth: []
       requestBody:
         required: true
         content:
@@ -87,24 +89,12 @@ paths:
             schema:
               type: object
               required:
-                - admin-name
-                - password
                 - x-correlator
               properties:
-                admin-name:
-                  type: string
-                  minLength: 3
-                  description: 'Name of the administrator who wants to use RequestSequenceRepresentation'
-                password:
-                  type: string
-                  minLength: 3
-                  description: 'Password of the administrator who wants to use RequestSequenceRepresentation'
                 x-correlator:
                   type: string
                   description: 'x-correlator of the flow that shall be visualized'
               example:
-                admin-name: 'User name'
-                password: 'secr3t'
                 x-correlator: '550e8400-e29b-11d4-a716-446655440000'
       responses:
         '200':
