@@ -283,10 +283,10 @@ paths:
                           reason-of-objection:
                             type: string
                       examples:
-                        True:
+                        true:
                           value:
                             oam-request-is-approved: true
-                        False:
+                        false:
                           value:
                             oam-request-is-approved: false
                             reason-of-objection: 'AUTHORIZATION_CODE_UNKNOWN'
