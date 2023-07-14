@@ -296,25 +296,6 @@ forwardings:
       - client-name: ApplicationLayerTopology://v1/delete-fc-port
         uuid: rsr-1-0-0-op-c-bm-alt-2-0-1-005
 
-  - forwarding-name: RequestForVisualizingFlowCausesAuthentication
-    uuid: rsr-1-0-0-op-fc-is-000
-    forwarding-type: InvariantProcessSnippet
-    management-requests:
-      operation-client-update:
-        - server-name: /v1/inquire-oam-request-approvals
-          uuid: rsr-1-0-0-op-s-bm-005
-      fc-port-update:
-        - server-name: /v1/inquire-oam-request-approvals
-          uuid: rsr-1-0-0-op-s-bm-005
-      fc-port-deletion:
-      operation-client-deletion:
-    initiating-requests:
-      - server-name: /v1/update-flow-visualization-page
-        uuid: rsr-1-0-0-op-s-is-001
-    consequent-requests:
-      - client-name: AA://v1/approve-oam-request
-        uuid: rsr-1-0-0-op-c-bs-aa-2-0-1-000
-
   - forwarding-name: RequestForVisualizingFlowCausesRetrievingListOfRecordsIfAuthenticationSucceeds
     uuid: rsr-1-0-0-op-fc-is-001
     forwarding-type: InvariantProcessSnippet
