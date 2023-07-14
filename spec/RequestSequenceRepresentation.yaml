@@ -8,12 +8,6 @@ x-gui-paths:
 #   Representation Layer
 ########################################################################################################################
   /docs:
-    parameters:
-      - $ref: '#/components/parameters/user'
-      - $ref: '#/components/parameters/originator'
-      - $ref: '#/components/parameters/x-correlator'
-      - $ref: '#/components/parameters/trace-indicator'
-      - $ref: '#/components/parameters/customer-journey'
     get:
       operationId: docs
       summary: 'Represents Swagger API description page'
@@ -36,12 +30,6 @@ x-gui-paths:
         default:
           $ref: '#/components/responses/responseForErroredOamRequests'
   /v1/represent-flow-visualization-page:
-    parameters:
-      - $ref: '#/components/parameters/user'
-      - $ref: '#/components/parameters/originator'
-      - $ref: '#/components/parameters/x-correlator'
-      - $ref: '#/components/parameters/trace-indicator'
-      - $ref: '#/components/parameters/customer-journey'
     get:
       operationId: representFlowVisualizationPage
       summary: 'Represents the page for visualizing sequences of requests with a given x-correlator'
