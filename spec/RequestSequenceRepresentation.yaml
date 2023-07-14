@@ -14,7 +14,7 @@ x-gui-paths:
       - $ref: '#/components/parameters/x-correlator'
       - $ref: '#/components/parameters/trace-indicator'
       - $ref: '#/components/parameters/customer-journey'
-    post:
+    get:
       operationId: docs
       summary: 'Represents Swagger API description page'
       tags:
@@ -42,7 +42,7 @@ x-gui-paths:
       - $ref: '#/components/parameters/x-correlator'
       - $ref: '#/components/parameters/trace-indicator'
       - $ref: '#/components/parameters/customer-journey'
-    post:
+    get:
       operationId: representFlowVisualizationPage
       summary: 'Represents the page for visualizing sequences of requests with a given x-correlator'
       tags:
