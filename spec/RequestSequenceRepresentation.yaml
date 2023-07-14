@@ -14,7 +14,7 @@ x-gui-paths:
       - $ref: '#/components/parameters/x-correlator'
       - $ref: '#/components/parameters/trace-indicator'
       - $ref: '#/components/parameters/customer-journey'
-    post:
+    get:
       operationId: docs
       summary: 'Represents Swagger API description page'
       tags:
@@ -42,7 +42,7 @@ x-gui-paths:
       - $ref: '#/components/parameters/x-correlator'
       - $ref: '#/components/parameters/trace-indicator'
       - $ref: '#/components/parameters/customer-journey'
-    post:
+    get:
       operationId: representFlowVisualizationPage
       summary: 'Represents the page for visualizing sequences of requests with a given x-correlator'
       tags:
@@ -1872,10 +1872,10 @@ paths:
                               'This attribute to be represented, if response::oam-request-is-approved==false.
                               Reasons to be checked and indicated according to the sequence defined in the enumeration.'
                       examples:
-                        True:
+                        true:
                           value:
                             oam-request-is-approved: true
-                        False:
+                        false:
                           value:
                             oam-request-is-approved: false
                             reason-of-objection: 'AUTHORIZATION_CODE_UNKNOWN'
