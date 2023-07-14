@@ -64,8 +64,6 @@ forwardings:
         uuid: rsr-1-0-0-op-s-bs-003
       - server-name: /v1/inform-about-release-history-in-generic-representation
         uuid: rsr-1-0-0-op-s-bs-004
-      - server-name: /docs
-        uuid: rsr-1-0-0-op-s-bs-005
       - server-name: /v1/represent-flow-visualization-page
         uuid: rsr-1-0-0-op-s-is-000
       - server-name: /v1/update-flow-visualization-page
