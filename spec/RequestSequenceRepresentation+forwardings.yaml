@@ -332,4 +332,4 @@ forwardings:
         uuid: rsr-1-0-0-op-s-is-001
     consequent-requests:
       - client-name: EATL://v1/list-records-of-flow
-        uuid: rsr-1-0-0-op-c-bs-eatl-2-0-1-000
+        uuid: rsr-1-0-0-op-c-is-eatl-2-0-1-000
