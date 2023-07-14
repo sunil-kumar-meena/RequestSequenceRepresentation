@@ -2062,11 +2062,6 @@
             ],
             "fc-port": [
               {
-                "local-id": "000",
-                "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_MANAGEMENT",
-                "logical-termination-point": "rsr-1-0-0-op-s-bm-002"
-              },
-              {
                 "local-id": "100",
                 "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
                 "logical-termination-point": "rsr-1-0-0-op-s-is-001"

@@ -301,11 +301,7 @@ forwardings:
     forwarding-type: InvariantProcessSnippet
     management-requests:
       operation-client-update:
-        - server-name: /v1/redirect-service-request-information
-          uuid: rsr-1-0-0-op-s-bm-002
       fc-port-update:
-        - server-name: /v1/redirect-service-request-information
-          uuid: rsr-1-0-0-op-s-bm-002
       fc-port-deletion:
       operation-client-deletion:
     initiating-requests:
