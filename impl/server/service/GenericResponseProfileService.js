@@ -1,20 +1,22 @@
 'use strict';
-
+var fileOperation = require('../node_modules/onf-core-model-ap/applicationPattern/databaseDriver/JSONDriver');
+const onfPaths = require('onf-core-model-ap/applicationPattern/onfModel/constants/OnfPaths');
 
 /**
  * Returns the Datatype of the Field
  *
  * uuid String 
- * returns inline_response_200_15
+ * returns inline_response_200_14
  **/
-exports.getGenericResponseProfileDatatype = function(uuid) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "response-profile-1-0:datatype" : "string"
+exports.getGenericResponseProfileDatatype = function(url) {
+  return new Promise(async function(resolve, reject) {
+    var response = {};
+    var value = await fileOperation.readFromDatabaseAsync(url);
+    response['application/json'] = {
+  "response-profile-1-0:datatype" : value
 };
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
+    if (Object.keys(response).length > 0) {
+      resolve(response[Object.keys(response)[0]]);
     } else {
       resolve();
     }
@@ -26,16 +28,17 @@ exports.getGenericResponseProfileDatatype = function(uuid) {
  * Returns the Description of the Field
  *
  * uuid String 
- * returns inline_response_200_14
+ * returns inline_response_200_13
  **/
-exports.getGenericResponseProfileDescription = function(uuid) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "response-profile-1-0:description" : "Name of this application"
+exports.getGenericResponseProfileDescription = function(url) {
+  return new Promise(async function(resolve, reject) {
+    var response = {};
+    var value = await fileOperation.readFromDatabaseAsync(url); 
+    response['application/json'] = {
+  "response-profile-1-0:description" : value
 };
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
+    if (Object.keys(response).length > 0) {
+      resolve(response[Object.keys(response)[0]]);
     } else {
       resolve();
     }
@@ -47,16 +50,18 @@ exports.getGenericResponseProfileDescription = function(uuid) {
  * Returns the name of the Field
  *
  * uuid String 
- * returns inline_response_200_13
+ * returns inline_response_200_12
  **/
-exports.getGenericResponseProfileFieldName = function(uuid) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "response-profile-1-0:field-name" : "{\"static-field-name\":\"applicationName\"}"
+exports.getGenericResponseProfileFieldName = function(url) {
+  return new Promise(async function(resolve, reject) {
+    var response = {};
+    var value = await fileOperation.readFromDatabaseAsync(url);
+   
+    response['application/json'] = {
+  "response-profile-1-0:field-name" : value
 };
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
+    if (Object.keys(response).length > 0) {
+      resolve(response[Object.keys(response)[0]]);
     } else {
       resolve();
     }
@@ -68,16 +73,17 @@ exports.getGenericResponseProfileFieldName = function(uuid) {
  * Returns the name of the Operation
  *
  * uuid String 
- * returns inline_response_200_12
+ * returns inline_response_200_11
  **/
-exports.getGenericResponseProfileOperationName = function(uuid) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "response-profile-1-0:operation-name" : "/v1/start-application-in-generic-representation"
+exports.getGenericResponseProfileOperationName = function(url) {
+  return new Promise(async function(resolve, reject) {
+    var response = {};
+    var value = await fileOperation.readFromDatabaseAsync(url);
+    response['application/json'] = {
+  "response-profile-1-0:operation-name" : value
 };
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
+    if (Object.keys(response).length > 0) {
+      resolve(response[Object.keys(response)[0]]);
     } else {
       resolve();
     }
@@ -89,18 +95,17 @@ exports.getGenericResponseProfileOperationName = function(uuid) {
  * Returns the Value of the Field
  *
  * uuid String 
- * returns inline_response_200_16
+ * returns inline_response_200_15
  **/
-exports.getGenericResponseProfileValue = function(uuid) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "response-profile-1-0:value" : {
-    "value-reference" : "/core-model-1-4:control-construct/logical-termination-point=rsr-1-0-0-http-s-000/layer-protocol=0/http-server-interface-1-0:http-server-interface-pac/http-server-interface-capability/application-name"
-  }
+exports.getGenericResponseProfileValue = function(url) {
+  return new Promise(async function(resolve, reject) {
+    var response = {};
+    var value = await fileOperation.readFromDatabaseAsync(url);
+    response['application/json'] = {
+  "response-profile-1-0:value" : value
 };
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
+    if (Object.keys(response).length > 0) {
+      resolve(response[Object.keys(response)[0]]);
     } else {
       resolve();
     }
@@ -115,9 +120,14 @@ exports.getGenericResponseProfileValue = function(uuid) {
  * uuid String 
  * no response value expected for this operation
  **/
-exports.putGenericResponseProfileValue = function(body,uuid) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
+exports.putGenericResponseProfileValue = function(url,body) {
+  return new Promise(async function(resolve, reject) {
+    try {
+      await fileOperation.writeToDatabaseAsync(url, body, false);
+      resolve();
+    } catch (error) {
+      reject();
+    }
+  });    
+          
+  }
