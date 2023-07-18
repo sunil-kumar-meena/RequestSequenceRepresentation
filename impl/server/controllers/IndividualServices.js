@@ -11,7 +11,7 @@ module.exports.updateFlowVisualizationPage = async function updateFlowVisualizat
     let startTime = process.hrtime();
     let responseCode = responseCodeEnum.code.OK;
     let responseBodyToDocument = {};
-    await IndividualServices.updateFlowVisualizationPage(user, originator, xCorrelator, traceIndicator, customerJourney, req.url)
+    await IndividualServices.updateFlowVisualizationPage(body, user, originator, xCorrelator, traceIndicator, customerJourney, req.url)
       .then(async function (responseBody) {
         responseBodyToDocument = responseBody;
         let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
