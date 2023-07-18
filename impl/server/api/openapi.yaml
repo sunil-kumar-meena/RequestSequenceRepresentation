@@ -17121,6 +17121,7 @@ components:
                       properties:
                         consequent-operation-reference:
                           type: string
+              additionalProperties: false
               description: action profile
             - required:
               - profile-name
