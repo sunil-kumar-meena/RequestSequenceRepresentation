@@ -1,5 +1,9 @@
 'use strict';
 
+const ForwardingAutomationServiceWithResponse = require('./individualServices/ForwardingAutomationServiceWithResponse');
+const prepareForwardingAutomation = require('./individualServices/PrepareForwardingAutomation');
+
+
 
 /**
  * Initiates authentication of the user and updating the flow visualization page with information about flow
@@ -12,7 +16,7 @@
  * customerJourney String Holds information supporting customer’s journey to which the execution applies
  * returns List
  **/
-exports.updateFlowVisualizationPage = function(body,user,originator,xCorrelator,traceIndicator,customerJourney) {
+exports.updateFlowVisualizationPage1 = function(body,user,originator,xCorrelator,traceIndicator,customerJourney) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = [ {
@@ -34,6 +38,54 @@ exports.updateFlowVisualizationPage = function(body,user,originator,xCorrelator,
 } ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+exports.updateFlowVisualizationPage = function (body, user, originator, xCorrelator, traceIndicator, customerJourney, operationServerName) {
+  let response = {};
+  return new Promise(async function (resolve, reject) {
+    try {
+
+      /****************************************************************************************
+       * Setting up required local variables from the request body
+       ****************************************************************************************/
+      let flowToBeChecked = body["x-correlator"];
+      let latestMatch = 0;
+      let numberOfRecords = 500;
+      
+
+      /****************************************************************************************
+       * Prepare attributes to automate forwarding-construct
+       ****************************************************************************************/
+      let forwardingAutomationInputList = await prepareForwardingAutomation.updateFlowVisualizationPage(
+        flowToBeChecked,
+        latestMatch,
+        numberOfRecords
+      );
+      let headers = {
+        user,
+        xCorrelator,
+        traceIndicator,
+        customerJourney
+      }
+
+      let recordListResponse = await ForwardingAutomationServiceWithResponse.automateForwardingConstructAsync(
+        forwardingAutomationInputList[0],
+        headers
+      );
+      
+      /****************************************************************************************
+       * Setting 'application/json' response body
+       ****************************************************************************************/
+      response['application/json'] = recordListResponse.data;
+    } catch (error) {
+      reject(error);
+    }
+    if (Object.keys(response).length > 0) {
+      resolve(response[Object.keys(response)[0]]);
     } else {
       resolve();
     }
