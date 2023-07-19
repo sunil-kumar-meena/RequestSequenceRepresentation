@@ -1,13 +1,122 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 1rem;
+  background: #f0f0f0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+  margin: 1rem auto 2rem;
+  max-width: 1000px;
+}
+
+pre {
+  font-size: 1rem;
+  font-family: Menlo, monospace;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.flex {
+  margin: 0 auto;
+  max-width: 1000px;
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+}
+
+.section {
+  background: white;
+  border: 1px solid #dedede;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.form.section {
+  flex: 0.5;
+  margin: auto;
+}
+
+.results.section {
+  flex: 1;
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+
+.flow.section {
+  flex: 1;
+  position: relative;
+  height: auto;
+  min-height: 100%;
+}
+
+.advanced-form input,
+.advanced-form select,
+.advanced-form textarea {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin: 0;
+}
+
+.advanced-form input[type='radio'] {
+  margin-right: 0.5rem;
+}
+
+.advanced-form input[type='text'],
+.advanced-form textarea,
+.advanced-form select {
+  width: 100%;
+}
+
+.advanced-form textarea {
+  min-height: 100px;
+}
+
+.advanced-form label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.advanced-form .field {
+  margin-bottom: 1rem;
+}
+
+.advanced-form .required,
+.advanced-form .error {
+  color: #d63642;
+}
+
+.advanced-form .error {
+  margin: 0.25rem 0;
+  display: block;
+}
+
+.advanced-form button {
+  border: 1px solid #3642d6;
+  border-radius: 4px;
+  background: #3642d6;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.advanced-form:hover {
+  filter: brightness(1.1);
+}
+
+.advanced-form button:disabled {
+  opacity: 0.5;
 }
