@@ -135,10 +135,13 @@ return (
   {   
   flowList.map(element => (    
     <div>
-    <div className="flex"><h2>Flow {flowNumber++}</h2></div>
-    <div className="flex">
+    <div className="flex"></div>
+    <div className="flex flow-diagram-section">
         <div className="flow section">
+        <h2 className='form-title'>Flow {flowNumber++}</h2>
+        <div className='flow-diagram'>
         <SequenceDiagram input={element} options={options} onError={onError} />
+        </div>
         </div>
       </div>
       </div>
