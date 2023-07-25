@@ -4,6 +4,8 @@ import { FlowDiagram } from './components/forms/Flow/FlowDiagram'
 import {Buffer} from 'buffer';
 import axios from 'axios';
 import randExp from 'randexp';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 export default function App() {
   const [flowValues, setFlowValues] = useState([])
@@ -41,14 +43,16 @@ export default function App() {
 
   return (
     <>
-      <h1>Flow Representation</h1>
+      <Header />
       <div className="flex">
-        <div className="form section">
+        <div className="form section mr-top-100">
+          <h2 className='form-title'>Flow Representation</h2>
           <AdvancedForm schema={formSchema} onSubmit={handleSubmit} />
         </div>
       </div>
       <br/>
       <FlowDiagram input={flowValues} isLoading = {loader} setLoading = {setLoader} />
+      <Footer />
     </>
   )
 

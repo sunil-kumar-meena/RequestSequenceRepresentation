@@ -66,86 +66,90 @@ export const FlowDiagram = (props) => {
         return flowDetailsList;
     }
 
-    function findNextSequence(current, traceIndicatorList) {
-        traceIndicatorList.forEach(traceIndicator => {
-            if (traceIndicator.startsWith(current.start + ".")) {
-                let slicedTraceIndicator = traceIndicator.slice(current.start.length);
-                let isEligibleForNext = slicedTraceIndicator.split(".").length == 2 ? true : false;
-                if (isEligibleForNext) {
-                    let newSequence = current.start + " --> " + traceIndicator;
-                    let currentSequenceList = current.sequenceList;
-                    let ifSequenceAlreadyExist = false;
-                    if (currentSequenceList.length > 0) {
-                        currentSequenceList.forEach(element => {
-                            let sequenceIdentifier = element.trace;
-                            if (sequenceIdentifier == newSequence) {
-                                ifSequenceAlreadyExist = true;
-                            }
-                        }); 
-                    }
-                    if (!ifSequenceAlreadyExist) {
-                        let newSequenceInstance = {
-                            trace: newSequence,
-                            previousHop: current.start,
-                            nextHop: traceIndicator,
-                            start: traceIndicator,
-                            sequenceList: []
-                        };
-                        current.sequenceList.push(newSequenceInstance);
-                        newSequenceInstance.sequenceList = findNextSequence(newSequenceInstance, traceIndicatorList);
-                    }
-                }
-            }
-        });
-        return current.sequenceList;
-    }
+function findNextSequence(current, traceIndicatorList) {
+  traceIndicatorList.forEach(traceIndicator => {
+      if (traceIndicator.startsWith(current.start + ".")) {
+          let slicedTraceIndicator = traceIndicator.slice(current.start.length);
+          let isEligibleForNext = slicedTraceIndicator.split(".").length == 2 ? true : false;
+          if (isEligibleForNext) {
+              let newSequence = current.start + " --> " + traceIndicator;
+              let currentSequenceList = current.sequenceList;
+              let ifSequenceAlreadyExist = false;
+              if (currentSequenceList.length > 0) {
+                  currentSequenceList.forEach(element => {
+                      let sequenceIdentifier = element.trace;
+                      if (sequenceIdentifier == newSequence) {
+                          ifSequenceAlreadyExist = true;
+                      }
+                  });
+              }
+              if (!ifSequenceAlreadyExist) {
+                  let newSequenceInstance = {
+                      trace: newSequence,
+                      previousHop: current.start,
+                      nextHop: traceIndicator,
+                      start: traceIndicator,
+                      sequenceList: []
+                  };
+                  current.sequenceList.push(newSequenceInstance);
+                  newSequenceInstance.sequenceList = findNextSequence(newSequenceInstance, traceIndicatorList);
+              }
+          }
+      }
+  });
+  return current.sequenceList;
+}
 
-    function formulateFlowDiagramInput(map, completeFlow) {
-        let FlowDiagramInputList = [];
-        completeFlow.forEach(element => {
-            let flowSplit = element.split(" --> ");
-            let sequenceStringForAFlow = "";
-            flowSplit.forEach(flowElement => {
-                let traceContent = map.get(flowElement);
-                let origination = traceContent["originator"];
-                let destination = traceContent["application-name"];
-                let responseCode = traceContent["response-code"];
-                let serviceName = traceContent["operation-name"];
-                let traceNote = "Note right of " + origination + ": " + flowElement + "\n"
-                let connector;
-                if (responseCode.toString().startsWith("2")) {
-                    connector = "->";
-                } else {
-                    connector = "-->";
-                }
-                sequenceStringForAFlow = sequenceStringForAFlow +
-                    traceNote +
-                    origination + connector + destination + ": " + serviceName + "\n" +
-                    destination + connector + origination + ": " + "ResponseCode " + responseCode + "\n";
-            });
-            FlowDiagramInputList.push(sequenceStringForAFlow);
-        });
-        return FlowDiagramInputList;
-    }
+function formulateFlowDiagramInput(map, completeFlow) {
+  let FlowDiagramInputList = [];
+  completeFlow.forEach(element => {
+      let flowSplit = element.split(" --> ");
+      let sequenceStringForAFlow = "";
+      flowSplit.forEach(flowElement => {
+          let traceContent = map.get(flowElement);
+          let origination = traceContent["originator"];
+          let destination = traceContent["application-name"];
+          let responseCode = traceContent["response-code"];
+          let serviceName = traceContent["operation-name"];
+          let traceNote = "Note right of " + origination + ": " + flowElement + "\n"
+          let connector;
+          if (responseCode.toString().startsWith("2")) {
+              connector = "->";
+          } else {
+              connector = "-->";
+          }
+          sequenceStringForAFlow = sequenceStringForAFlow +
+              traceNote +
+              origination + connector + destination + ": " + serviceName + "\n" + 
+              destination + connector + origination + ": " + "ResponseCode " + responseCode + "\n" ;
+      });
+      FlowDiagramInputList.push(sequenceStringForAFlow);
+  });
+  return FlowDiagramInputList;
+}
 
-    let flowNumber = 1;
-    if (props.isLoading) {
+let flowNumber = 1;
+  if (props.isLoading) {
         return (<Spinner />)
     } else {
-        return (
-            <div>
-                {
-                    flowList.map(element => (
-                        <div>
-                            <div className="flex"><h2>Flow {flowNumber++}</h2></div>
-                            <div className="flex">
-                                <div className="flow section">
-                                    <SequenceDiagram input={element} options={options} onError={onError} />
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-            </div>
+return (
+  <div>
+  {   
+  flowList.map(element => (    
+    <div>
+    <div className="flex"></div>
+    <div className="flex flow-diagram-section">
+        <div className="flow section">
+        <h2 className='form-title'>Flow {flowNumber++}</h2>
+        <div className='flow-diagram'>
+        <SequenceDiagram input={element} options={options} onError={onError} />
+        </div>
+        </div>
+      </div>
+      </div>
+  ))}
+  </div>    
+
         )
     }
 }

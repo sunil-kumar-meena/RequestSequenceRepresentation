@@ -41,6 +41,7 @@ export const getValidationSchema = (schema) => {
       case 'textarea':
       case 'select':
       case 'radioGroup':
+      case 'password':
         validationType = Yup.string()
         break
       case 'checkbox':

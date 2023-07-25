@@ -97,6 +97,10 @@ pre {
   color: #d63642;
 }
 
+.advanced-form #password{
+  width: 100%;
+}
+
 .advanced-form .error {
   margin: 0.25rem 0;
   display: block;
@@ -104,10 +108,10 @@ pre {
 
 .advanced-form button {
   border: 1px solid #3642d6;
-  border-radius: 4px;
+  padding: 12px 25px 12px 25px;
+  border-radius: 24px;
   background: #3642d6;
   color: white;
-  padding: 0.5rem 1rem;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
@@ -119,4 +123,44 @@ pre {
 
 .advanced-form button:disabled {
   opacity: 0.5;
+}
+
+.form-title{
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 17px;
+  background: #0c54a1;
+  color: white;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  z-index: 998;
+  font-weight: normal;
+}
+
+.form.section{
+  position: relative;
+  margin-top: 100px;
+}
+
+.form.section button{
+  border: 1px solid #0c54a1;
+  background: #0c54a1;
+}
+
+.advanced-form{
+  margin-top: 50px;
+}
+
+.flow-diagram-section .flow-diagram{
+  margin-top: 50px;
+  text-align: center;
+}
+
+.flow-diagram-section h2{
+  font-size: 20px;
+  padding: 10px;
 }

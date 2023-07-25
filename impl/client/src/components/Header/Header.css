@@ -1,0 +1,35 @@
+  .header {
+    z-index: 999;
+    height: 88px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 10px 50px 10px 50px;
+    background: white;
+    box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  }
+  
+  .logo {
+    width: 164px;
+  }
+
+  .header-container{
+    position: relative
+  }
+
+  .header-title-container{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .header-text {
+    text-align: center;
+    font-size: 25px;
+    width: 500px;
+    height: 30px
+  }
