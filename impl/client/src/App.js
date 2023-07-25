@@ -9,9 +9,10 @@ import Footer from './components/Footer/Footer';
 
 export default function App() {
   const [flowValues, setFlowValues] = useState([])
-  
+  const [loader, setLoader] = useState(false) ;
+
   const handleSubmit = async (values, { setSubmitting }) => {
-    console.log(values);
+    setLoader(true)
     let xCorrelator = values.xCorrelator;
     let userName = values.username;
     let password = values.password;
@@ -21,6 +22,7 @@ export default function App() {
 
     getListOfRecords(xCorrelator, basicAuth).then((recordList) => {
       setFlowValues(recordList);
+      setLoader(false)
     });
     
     await new Promise((r) => setTimeout(r, 1000))
@@ -49,7 +51,7 @@ export default function App() {
         </div>
       </div>
       <br/>
-      <FlowDiagram input={flowValues}/>
+      <FlowDiagram input={flowValues} isLoading = {loader} setLoading = {setLoader} />
       <Footer />
     </>
   )
