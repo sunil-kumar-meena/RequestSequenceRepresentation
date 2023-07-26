@@ -30,7 +30,7 @@ export const AdvancedForm = ({
   onSubmit,
   initialValues,
   onClose,
-  buttonLabel = 'Submit',
+  buttonLabel = 'Validate flow',
   ...props
 }) => {
   const defaultValues = getDefaultValues(schema)

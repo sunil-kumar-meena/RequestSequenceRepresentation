@@ -43,6 +43,7 @@ pre {
 .form.section {
   flex: 0.5;
   margin: auto;
+  width: 84%;
 }
 
 .results.section {
@@ -128,12 +129,12 @@ pre {
 .form-title{
   width: 100%;
   position: absolute;
-  top: 0px;
+  top: 10px;
   left: 0px;
-  text-align: center;
+  text-align: left;
   margin: 0 auto;
   padding: 17px;
-  background: #0c54a1;
+  background: rgb(0, 102, 255);
   color: white;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
@@ -144,15 +145,16 @@ pre {
 .form.section{
   position: relative;
   margin-top: 100px;
+  width: 84%;
 }
 
 .form.section button{
-  border: 1px solid #0c54a1;
-  background: #0c54a1;
+  border: 1px solid rgb(0, 102, 255);
+  background: rgb(0, 102, 255);
 }
 
 .advanced-form{
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .flow-diagram-section .flow-diagram{

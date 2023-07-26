@@ -46,7 +46,6 @@ export default function App() {
       <Header />
       <div className="flex">
         <div className="form section mr-top-100">
-          <h2 className='form-title'>Flow Representation</h2>
           <AdvancedForm schema={formSchema} onSubmit={handleSubmit} />
         </div>
       </div>
@@ -75,7 +74,7 @@ export default function App() {
         };
         let request = {
             method: "post",
-            url: "http://localhost:3015/v1/update-flow-visualization-page",
+            url: origin +"/v1/update-flow-visualization-page",
             headers: requestHeader,
             data: requestBody
         }
