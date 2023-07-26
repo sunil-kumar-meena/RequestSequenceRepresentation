@@ -6,7 +6,7 @@
     top: 0px;
     left: 0px;
     padding: 10px 50px 10px 50px;
-    background: white;
+    background: rgb(0, 102, 255);
     box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
   }
   
@@ -31,5 +31,6 @@
     text-align: center;
     font-size: 25px;
     width: 500px;
-    height: 30px
+    height: 30px;
+    color: #FFF;
   }

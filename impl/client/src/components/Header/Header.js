@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LogoImage from '../../images/Telefonica_logo.png';
+import LogoImage from '../../images/TefLogo.JPG';
 import './Header.css';
 
 export class Header extends Component {
