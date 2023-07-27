@@ -163,7 +163,7 @@ pre {
 }
 .flow-diagram-section {
 	overflow-x: auto;
-	max-width: 100%;
+	max-width: 90%;
 }
 
 .flow-diagram-section h2{
