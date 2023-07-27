@@ -24,3 +24,31 @@ This application supports efficiently debugging the application layer.
 
 ### Comments
 ./.
+
+# How to execute application
+## use below command
+1. npm start
+ 
+# How to create react build
+1. npm run build
+
+## docker commands
+# Create docker image from docker file
+step 1. docker build -t IMAGE_NAME .
+
+# Create and run docker container
+step 2. docker run -p HOST_PORT:CONTAINER_PORT -d --name CONTAINER_NAME IMAGE_NAME
+
+# Run existing docker container
+1. docker start CONTAINER_NAME
+
+# Remove docker image
+1. docker image rm IMAGE_NAME
+
+# Remove docker container first
+1. docker rm CONTAINER_NAME
+
+## Steps to create/run docker container from GitLab/GitHub
+1. git clone REPO_URL
+2. docker build -t IMAGE_NAME .
+3. docker run -p HOST_PORT:CONTAINER_PORT -d --name CONTAINER_NAME IMAGE_NAME
