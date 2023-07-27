@@ -161,6 +161,10 @@ pre {
   margin-top: 50px;
   text-align: center;
 }
+.flow-diagram-section {
+	overflow-x: auto;
+	max-width: 100%;
+}
 
 .flow-diagram-section h2{
   font-size: 20px;
