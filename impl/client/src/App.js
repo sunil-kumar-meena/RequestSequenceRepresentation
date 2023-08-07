@@ -7,6 +7,17 @@ import randExp from 'randexp';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
+const ERROR_MESSAGES = {
+  "401" : "Username or Password is incorrect",
+  "404" : "No data found",
+  "500" : "Internal server error",
+  "other" : "Error in fetching data"
+}
+
+const ERROR_STYLING = {
+  "warning" : "alert alert-warning",
+  "danger" : "alert alert-danger"
+}
 export default function App() {
   const [flowValues, setFlowValues] = useState([])
   const [loader, setLoader] = useState(false) ;
@@ -24,22 +35,30 @@ export default function App() {
     getListOfRecords(xCorrelator, basicAuth).then((recordList) => {
       let message;
       let classname
-
       let recordListLength;
-      if(recordList.data != undefined){
-        recordListLength = recordList.data.length
-      }else{
-        recordListLength = recordList.length 
-      }
-      if(recordListLength == 0){
+
+      if(recordList.catch){
+        recordListLength = 0;
+        message = recordList.message
         errorMessage = true
-        if(recordList.status == 200){
-          message = "No data found"
-          classname = "alert alert-warning"
+        classname = ERROR_STYLING.danger
+      }else{
+        if(recordList.data != undefined){
+          recordListLength = recordList.data.length
+        }else{
+          recordListLength = recordList.length 
         }
-        else if(recordList.status != 200){
-          message = "Error in fetching data"
-          classname = "alert alert-danger"
+
+        if(recordListLength == 0){
+          errorMessage = true
+          if(recordList.status == 200){
+            message = ERROR_MESSAGES[404]
+            classname = ERROR_STYLING.warning
+          }
+          else if(recordList.status != 200){
+            message = ERROR_MESSAGES[401]
+            classname = ERROR_STYLING.danger
+          }
         }
       }
       
@@ -49,9 +68,10 @@ export default function App() {
         "message": message,
         "css": classname 
       }
+
       setFlowValues(listOfRecords);
       setLoader(false)
-    });
+    })
     
     await new Promise((r) => setTimeout(r, 1000))
     setSubmitting(false)
@@ -108,10 +128,26 @@ export default function App() {
             data: requestBody
         }
         listOfRecords = (await axios(request));
+        return listOfRecords;
     } catch (error) {
-        console.log(error);
+        let listOfRecords;
+        let message
+        if(error.toString().includes("401")){
+          message = ERROR_MESSAGES[401]
+        }else if(error.toString().includes("500")){
+          message = ERROR_MESSAGES[500]
+        }else{
+          message = ERROR_MESSAGES.other
+        }
+
+        listOfRecords = {
+          "message" : message,
+          "catch" : true
+        }
+
+        return listOfRecords;
     }    
-    return listOfRecords;
+    
 }
 
 function getRandomXCorrelator() {
