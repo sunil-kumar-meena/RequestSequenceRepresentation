@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer';
 export default function App() {
   const [flowValues, setFlowValues] = useState([])
   const [loader, setLoader] = useState(false) ;
+  let errorMessage = false
 
   const handleSubmit = async (values, { setSubmitting }) => {
     setLoader(true)
@@ -21,7 +22,34 @@ export default function App() {
     setSubmitting(true)
 
     getListOfRecords(xCorrelator, basicAuth).then((recordList) => {
-      setFlowValues(recordList);
+      let message;
+      let classname
+
+      let recordListLength;
+      if(recordList.data != undefined){
+        recordListLength = recordList.data.length
+      }else{
+        recordListLength = recordList.length 
+      }
+      if(recordListLength == 0){
+        errorMessage = true
+        if(recordList.status == 200){
+          message = "No data found"
+          classname = "alert alert-warning"
+        }
+        else if(recordList.status != 200){
+          message = "Error in fetching data"
+          classname = "alert alert-danger"
+        }
+      }
+      
+      let listOfRecords = {
+        "recordList": recordList.data,
+        "errorMessage": errorMessage,
+        "message": message,
+        "css": classname 
+      }
+      setFlowValues(listOfRecords);
       setLoader(false)
     });
     
@@ -46,11 +74,12 @@ export default function App() {
       <Header />
       <div className="flex">
         <div className="form section mr-top-100">
+          { (flowValues.errorMessage) ? <div className={flowValues.css}>{flowValues.message}</div>: '' }
           <AdvancedForm schema={formSchema} onSubmit={handleSubmit} />
         </div>
       </div>
       <br/>
-      <FlowDiagram input={flowValues} isLoading = {loader} setLoading = {setLoader} />
+      <FlowDiagram input={flowValues.recordList} isLoading = {loader} setLoading = {setLoader} />
       <Footer />
     </>
   )
@@ -78,7 +107,7 @@ export default function App() {
             headers: requestHeader,
             data: requestBody
         }
-        listOfRecords = (await axios(request)).data;
+        listOfRecords = (await axios(request));
     } catch (error) {
         console.log(error);
     }    
