@@ -178,3 +178,20 @@ pre {
   font-weight: 600;
   color: black;
 }
+
+.alert{
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.alert-danger{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-warning{
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
