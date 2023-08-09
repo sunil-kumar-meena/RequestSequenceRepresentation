@@ -1689,11 +1689,6 @@
                     "logical-termination-point": "rsr-1-0-0-op-s-bs-004"
                   },
                   {
-                    "local-id": "117",
-                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
-                    "logical-termination-point": "rsr-1-0-0-op-s-bs-005"
-                  },
-                  {
                     "local-id": "118",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
                     "logical-termination-point": "rsr-1-0-0-op-s-is-000"
@@ -2056,36 +2051,6 @@
                 ]
               },
               {
-                "uuid": "rsr-1-0-0-op-fc-is-000",
-                "name": [
-                  {
-                    "value-name": "ForwardingKind",
-                    "value": "core-model-1-4:FORWARDING_KIND_TYPE_INVARIANT_PROCESS_SNIPPET"
-                  },
-                  {
-                    "value-name": "ForwardingName",
-                    "value": "RequestForVisualizingFlowCausesAuthentication"
-                  }
-                ],
-                "fc-port": [
-                  {
-                    "local-id": "000",
-                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_MANAGEMENT",
-                    "logical-termination-point": "rsr-1-0-0-op-s-bm-005"
-                  },
-                  {
-                    "local-id": "100",
-                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
-                    "logical-termination-point": "rsr-1-0-0-op-s-is-001"
-                  },
-                  {
-                    "local-id": "200",
-                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "rsr-1-0-0-op-c-bs-aa-2-0-1-000"
-                  }
-                ]
-              },
-              {
                 "uuid": "rsr-1-0-0-op-fc-is-001",
                 "name": [
                   {
@@ -2099,11 +2064,6 @@
                 ],
                 "fc-port": [
                   {
-                    "local-id": "000",
-                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_MANAGEMENT",
-                    "logical-termination-point": "rsr-1-0-0-op-s-bm-002"
-                  },
-                  {
                     "local-id": "100",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
                     "logical-termination-point": "rsr-1-0-0-op-s-is-001"
@@ -2111,7 +2071,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "rsr-1-0-0-op-c-bs-eatl-2-0-1-000"
+                    "logical-termination-point": "rsr-1-0-0-op-c-is-eatl-2-0-1-000"
                   }
                 ]
               }

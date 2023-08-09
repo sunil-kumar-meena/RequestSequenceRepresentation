@@ -58,6 +58,8 @@ pre {
   position: relative;
   height: auto;
   min-height: 100%;
+  padding: 10px;
+  width: 100%;
 }
 
 .advanced-form input,
@@ -128,11 +130,7 @@ pre {
 
 .form-title{
   width: 100%;
-  position: absolute;
-  top: 10px;
-  left: 0px;
   text-align: left;
-  margin: 0 auto;
   padding: 17px;
   background: rgb(0, 102, 255);
   color: white;
@@ -158,18 +156,29 @@ pre {
 }
 
 .flow-diagram-section .flow-diagram{
-  margin-top: 50px;
+  margin-top: 0px;
   text-align: center;
+  overflow-x: auto;
+  border: 1px solid #fafafa;
+  border-top:0px
 }
+
 .flow-diagram-section {
-	overflow-x: auto;
 	max-width: 90%;
+}
+.flow-diagram-section.section{
+  padding: 0px;
 }
 
 .flow-diagram-section h2{
   font-size: 20px;
   padding: 10px;
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-weight: 600;
+  color: black;
 }
+
 .alert{
   border-radius: 5px;
   padding: 15px;

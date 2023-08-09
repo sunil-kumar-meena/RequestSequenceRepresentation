@@ -10,7 +10,7 @@ import Footer from './components/Footer/Footer';
 const ERROR_MESSAGES = {
   "401" : "Username or Password is incorrect",
   "404" : "No data found",
-  "500" : "Internal server error",
+  "500" : "Error in fetching data",
   "other" : "Error in fetching data"
 }
 
