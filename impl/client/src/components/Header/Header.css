@@ -14,6 +14,10 @@
     width: 164px;
   }
 
+  .info {
+    width: 30px;
+  }
+
   .header-container{
     position: relative
   }
@@ -25,6 +29,16 @@
     left: 0;
     right: 0;
     margin: 0 auto;
+  }
+
+  .header-info-container{
+    position: absolute;
+    top:1;
+    bottom:0;
+    left: 1;
+    right: 0;
+    margin: 0 auto;
+    color: #FFF;
   }
 
   .header-text {

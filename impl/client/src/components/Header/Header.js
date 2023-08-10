@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import LogoImage from '../../images/TefLogo.JPG';
+import InformationAboutApplication from '../dialogBox/InformationAboutApplication'
+
+import logoImage from '../../images/TefLogo.JPG';
 import './Header.css';
 
 export class Header extends Component {
@@ -15,10 +17,13 @@ export class Header extends Component {
       <header className="header">
         <div className="header-container">
           <div>
-            <img className="logo" src={LogoImage} alt="Logo" />
+            <img className="logo" src={logoImage} alt="Logo" />
           </div>
           <div className="header-title-container">
             <h1 className='header-text'>Request Sequence Representation</h1>
+          </div>
+          <div className="header-info-container">
+          <InformationAboutApplication/>
           </div>
         </div>
       </header>
