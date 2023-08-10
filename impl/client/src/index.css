@@ -165,6 +165,7 @@ pre {
 
 .flow-diagram-section {
 	max-width: 90%;
+  margin-bottom: 70px;
 }
 .flow-diagram-section.section{
   padding: 0px;
