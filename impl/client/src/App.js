@@ -71,16 +71,9 @@ export default function App() {
 
       setFlowValues(listOfRecords);
       setLoader(false)
-    })
-    
-    await new Promise((r) => setTimeout(r, 1000))
+    })    
+    //await new Promise((r) => setTimeout(r, 1000))
     setSubmitting(false)
-  }
-
-  const numberOfRecordsArray = [];
-  for(let i=0;i<10000;i++){
-    let numberOfRecords =  { label: i, value: i };
-    numberOfRecordsArray.push(numberOfRecords);
   }
 
   const formSchema = [
