@@ -30,7 +30,7 @@ export const AdvancedForm = ({
   onSubmit,
   initialValues,
   onClose,
-  buttonLabel = 'Validate flow',
+  buttonLabel = 'Visualize Flow',
   ...props
 }) => {
   const defaultValues = getDefaultValues(schema)
@@ -103,9 +103,11 @@ export const AdvancedForm = ({
                 />
               )
             })}
+            <div style={{textAlign:'center'}}>            
             <button type="submit" disabled={!isValid || isSubmitting}>
               {buttonLabel}
             </button>
+            </div>
           </form>
         )
       }}

@@ -84,9 +84,9 @@ export default function App() {
   }
 
   const formSchema = [
-    { name: 'xCorrelator', label: 'x-correlator', componentType: 'text', required: true },
     { name: 'username', label: 'Username', componentType: 'text', required: true },
     { name: 'password', label: 'Password', componentType: 'password', required: true },
+    { name: 'xCorrelator', label: 'x-correlator', componentType: 'text', required: true },
   ]
 
   return (
