@@ -86,7 +86,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <div className="flex">
+      <div className="flex form-container">
         <div className="form section mr-top-100">
           { (flowValues.errorMessage) ? <div className={flowValues.css}>{flowValues.message}</div>: '' }
           <AdvancedForm schema={formSchema} onSubmit={handleSubmit} />

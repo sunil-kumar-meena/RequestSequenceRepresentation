@@ -196,3 +196,13 @@ pre {
   background-color: #fcf8e3;
   border-color: #faebcc;
 }
+
+@media only screen and (max-width: 750px) {
+  .form-container{
+    display: block;
+  }
+  
+  .form.section{
+    width: 90%;
+  }
+}
