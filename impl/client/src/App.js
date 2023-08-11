@@ -95,7 +95,7 @@ export default function App() {
       </div>
       <br/>
 
-      <div className="flex">
+      <div className="flexLog">
       <div className="results section">
           <pre>"{JSON.stringify(formValues, null, 2)}"</pre>
       </div>
