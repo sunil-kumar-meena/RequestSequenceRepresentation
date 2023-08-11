@@ -44,7 +44,43 @@
   .header-text {
     text-align: center;
     font-size: 25px;
-    width: 500px;
     height: 30px;
     color: #FFF;
+  }
+
+  @media only screen and (max-width: 850px) {
+    .header{
+      height: auto;
+    }
+
+    .header-container{
+      text-align: center;
+    }
+
+    .header-title-container, .header-info-container{
+      position: inherit;
+      margin-top: -20px;
+    }
+
+    .form.section {
+      margin-top: 150px;
+    }
+  }
+
+  @media only screen and (max-width: 504px) {
+    .header-text {
+      font-size: 21px; 
+    }
+  }
+
+  @media only screen and (max-width: 440px) {
+    .header-info-container{
+      margin-top: -9px;
+    }
+  }
+
+  @media only screen and (max-width: 285px) {
+    .header-text {
+      font-size: 18px; 
+    }
   }
