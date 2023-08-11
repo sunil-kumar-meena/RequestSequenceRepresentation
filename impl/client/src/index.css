@@ -27,10 +27,9 @@ pre {
 
 .flex {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1420px;
   display: flex;
   gap: 2rem;
-  width: 100%;
 }
 
 .section {
@@ -195,6 +194,13 @@ pre {
   color: #8a6d3b;
   background-color: #fcf8e3;
   border-color: #faebcc;
+}
+
+.results.section {
+  flex: 1;
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
 
 @media only screen and (max-width: 750px) {

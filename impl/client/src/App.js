@@ -19,6 +19,7 @@ const ERROR_STYLING = {
   "danger" : "alert alert-danger"
 }
 export default function App() {
+  const [formValues, setFormValues] = useState([])
   const [flowValues, setFlowValues] = useState([])
   const [loader, setLoader] = useState(false) ;
   let errorMessage = false
@@ -68,7 +69,7 @@ export default function App() {
         "message": message,
         "css": classname 
       }
-
+      setFormValues(recordList.data);
       setFlowValues(listOfRecords);
       setLoader(false)
     })
@@ -93,6 +94,14 @@ export default function App() {
         </div>
       </div>
       <br/>
+
+      <div className="flex">
+      <div className="results section">
+          <pre>"{JSON.stringify(formValues, null, 2)}"</pre>
+      </div>
+      </div>  
+      <br/>
+
       <FlowDiagram input={flowValues.recordList} isLoading = {loader} setLoading = {setLoader} />
       <Footer />
     </>
@@ -117,7 +126,7 @@ export default function App() {
         };
         let request = {
             method: "post",
-            url: origin +"/v1/update-flow-visualization-page",
+            url: "http://10.118.125.211:3015" +"/v1/update-flow-visualization-page",
             headers: requestHeader,
             data: requestBody
         }
