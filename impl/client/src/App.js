@@ -126,7 +126,7 @@ export default function App() {
         };
         let request = {
             method: "post",
-            url: "http://10.118.125.211:3015" +"/v1/update-flow-visualization-page",
+            url: origin +"/v1/update-flow-visualization-page",
             headers: requestHeader,
             data: requestBody
         }
