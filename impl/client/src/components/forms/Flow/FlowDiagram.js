@@ -3,7 +3,7 @@ import './index.css';
 import Spinner from '../../Spinner/Spinner';
 import SequenceDiagram from 'react-sequence-diagram';
 import Accordion from '../../Accordion/Accordion';
-const AccordionContent = []
+var AccordionContent = []
 
 export const FlowDiagram = (props) => {
     let flowList = formulateFlowList(props.input);
@@ -21,6 +21,8 @@ export const FlowDiagram = (props) => {
         let formulatedFlowList = [];
         if (!(input instanceof Array)) {
             return formulatedFlowList;
+        }else if(input.length == 1){
+            return formulateSingleFlowDiagramInput(input);
         }
         input.forEach((trace) => {
             map.set(trace["trace-indicator"], trace);
@@ -128,10 +130,34 @@ export const FlowDiagram = (props) => {
         return FlowDiagramInputList;
     }
 
+    function formulateSingleFlowDiagramInput(input) {
+        let FlowDiagramInputList = []; 
+        let traceContent = input[0]; 
+        let origination = traceContent["originator"];
+        let destination = traceContent["application-name"];
+        let responseCode = traceContent["response-code"];
+        let serviceName = traceContent["operation-name"];
+        let flowElement = traceContent["trace-indicator"];
+        let traceNote = "Note right of " + origination + ": " + flowElement + "\n"
+        let connector;
+        if (responseCode.toString().startsWith("2")) {
+            connector = "->";
+        } else {
+            connector = "-->";
+        }
+        let sequenceStringForAFlow = traceNote +
+        origination + connector + destination + ": " + serviceName + "\n" +
+        destination + connector + origination + ": " + "ResponseCode " + responseCode + "\n";
+        FlowDiagramInputList.push(sequenceStringForAFlow);
+        return FlowDiagramInputList;
+    }
+
+
     let flowNumber = 1;
     if (props.isLoading) {
         return (<Spinner />)
     } else {
+        AccordionContent = [];
         flowList.map(element => {
             AccordionContent[flowNumber] = {
                 'title': "Flow " + flowNumber,

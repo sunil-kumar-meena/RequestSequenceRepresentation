@@ -27,7 +27,7 @@ pre {
 
 .flex {
   margin: 0 auto;
-  max-width: 1420px;
+  max-width: 1000px;
   display: flex;
   gap: 2rem;
 }
