@@ -123,7 +123,7 @@ export default function App() {
         };
         let request = {
             method: "post",
-            url: "http://172.28.127.10:3015" +"/v1/update-flow-visualization-page",
+            url: origin +"/v1/update-flow-visualization-page",
             headers: requestHeader,
             data: requestBody
         }
