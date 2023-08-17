@@ -9,11 +9,12 @@ export class Footer extends Component {
 
   render() {
     return (
-      <footer className="footer">
+      ""
+      /*<footer className="footer">
         <p>
           Copyright &copy; 2023. All rights reserved Telefonica T-MAT Access Transport Engineering
         </p>
-      </footer>
+      </footer>*/
     )
   }
 }

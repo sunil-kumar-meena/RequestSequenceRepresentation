@@ -17,7 +17,9 @@ export class Header extends Component {
       <header className="header">
         <div className="header-container">
           <div>
-            <img className="logo" src={logoImage} alt="Logo" />
+            {
+             // <img className="logo" src={logoImage} alt="Logo" />
+            }
           </div>
           <div className="header-title-container">
             <h1 className='header-text'>Request Sequence Representation</h1>
