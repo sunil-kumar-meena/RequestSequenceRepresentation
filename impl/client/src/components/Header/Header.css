@@ -33,7 +33,7 @@
 
   .header-info-container{
     position: absolute;
-    top:1;
+    top:21px;
     bottom:0;
     left: 1;
     right: 0;
@@ -62,6 +62,9 @@
       margin-top: -20px;
     }
 
+    .header-info-container{
+      top:1px;
+    }
     .form.section {
       margin-top: 150px;
     }

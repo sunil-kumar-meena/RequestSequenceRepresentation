@@ -94,12 +94,9 @@ export default function App() {
         </div>
       </div>
       <br/>
-
-      <div className="flexLog">
-      <div className="results section">
-          <pre>"{JSON.stringify(formValues, null, 2)}"</pre>
-      </div>
-      </div>  
+      {
+        (formValues != undefined && formValues.length > 0) ? <div className="flexLog"><div className="results section"><pre>"{JSON.stringify(formValues, null, 2)}"</pre></div></div> : ""
+      }
       <br/>
 
       <FlowDiagram input={flowValues.recordList} isLoading = {loader} setLoading = {setLoader} />
