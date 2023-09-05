@@ -6,6 +6,7 @@ import axios from 'axios';
 import randExp from 'randexp';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import axiostime from 'axios-time'
 
 const ERROR_MESSAGES = {
   "401" : "Username or Password is incorrect",
@@ -72,9 +73,8 @@ export default function App() {
       setFormValues(recordList.data);
       setFlowValues(listOfRecords);
       setLoader(false)
+      handleFailedConnector(recordList)
     })
-    
-    //await new Promise((r) => setTimeout(r, 1000))
     setSubmitting(false)
   }
 
@@ -127,6 +127,7 @@ export default function App() {
             headers: requestHeader,
             data: requestBody
         }
+        axiostime(axios)
         listOfRecords = (await axios(request));
         return listOfRecords;
     } catch (error) {
@@ -160,4 +161,35 @@ function getRandomXCorrelator() {
     }
     return randomXCorrelatorString;
 }
+
+  function handleFailedConnector(recordList){
+    setTimeout(()=>{
+      const path = document.querySelectorAll('[stroke-dasharray="6,2"]');
+      path.forEach((element)=>{
+        element.setAttribute("stroke", "red")
+        let markerEnd = element.getAttribute("marker-end")
+        let markerId = markerEnd.replace(/(url\(\#)|(\))/gi,'')
+        let markerElement = document.getElementById(markerId)
+        let markerAttributes = {
+          "markerWidth": "20",
+          "markerHeight": "20",
+          "refX": "9.5",
+          "refY": "11.5"
+        }
+        setMultipleAttributes(markerElement,markerAttributes)
+        let markerChild = document.querySelector("#"+markerId + " use")
+        markerChild.remove()
+        markerElement.innerHTML += '<path fill="none" stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.758 17.243L12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243"></path>'
+      })
+      for(let i =0; i< path.length; i++){
+          path[i].setAttribute("stroke", "red")
+      }
+    },recordList.timings)
+
+    function setMultipleAttributes(markerElement, attribute){
+      for(let key in attribute){
+        markerElement.setAttribute(key,attribute[key])
+      }
+    }
+  }
 }
