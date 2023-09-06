@@ -74,6 +74,7 @@ export default function App() {
       setFlowValues(listOfRecords);
       setLoader(false)
       handleFailedConnector(recordList)
+      handleConnectorAndResponseTextPosition(recordList)
     })
     setSubmitting(false)
   }
@@ -162,6 +163,43 @@ function getRandomXCorrelator() {
     return randomXCorrelatorString;
 }
 
+  /**
+   * Function is to change Response text position and it's connector position
+   */
+  function handleConnectorAndResponseTextPosition(recordList){
+    setTimeout(()=>{
+      const FlowDiagramTexts = document.querySelectorAll('text tspan');
+      let FlowDiagramResponsePath;
+      let FlowDiagramTextParent
+      let isResponseCodeTest
+      let FlowDiagramResponsePathCoordinates
+      let PathCoordinatesArray
+      let PathCoordinatesArrayLastValue
+      let PathCoordinatesChanged
+      let FlowDiagramTextParentYaxis
+      let regularExpress
+
+      FlowDiagramTexts.forEach((FlowDiagramText)=>{
+        isResponseCodeTest = FlowDiagramText.innerHTML.includes("ResponseCode")
+        if(isResponseCodeTest){
+          FlowDiagramTextParent = FlowDiagramText.parentElement
+          FlowDiagramResponsePath = FlowDiagramTextParent.nextElementSibling
+          FlowDiagramTextParentYaxis = FlowDiagramTextParent.getAttribute("y")
+          FlowDiagramResponsePathCoordinates = FlowDiagramResponsePath.getAttribute("d")
+          PathCoordinatesArray = FlowDiagramResponsePathCoordinates.split(',')
+          PathCoordinatesArrayLastValue = PathCoordinatesArray[PathCoordinatesArray.length - 1]
+          regularExpress = new RegExp('('+ PathCoordinatesArrayLastValue +')','gi')
+          PathCoordinatesChanged = FlowDiagramResponsePathCoordinates.replace(regularExpress, FlowDiagramTextParentYaxis)
+          FlowDiagramResponsePath.setAttribute("d",PathCoordinatesChanged)
+          FlowDiagramTextParent.setAttribute("y",PathCoordinatesArrayLastValue)          
+        }
+      })
+    },recordList.timings)
+  }
+
+  /**
+   * Function is to change style for failed connectors
+   */
   function handleFailedConnector(recordList){
     setTimeout(()=>{
       const path = document.querySelectorAll('[stroke-dasharray="6,2"]');
@@ -185,11 +223,11 @@ function getRandomXCorrelator() {
           path[i].setAttribute("stroke", "red")
       }
     },recordList.timings)
+  }
 
-    function setMultipleAttributes(markerElement, attribute){
-      for(let key in attribute){
-        markerElement.setAttribute(key,attribute[key])
-      }
+  function setMultipleAttributes(markerElement, attribute){
+    for(let key in attribute){
+      markerElement.setAttribute(key,attribute[key])
     }
   }
 }
